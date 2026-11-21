@@ -130,6 +130,11 @@ aside.sidebar {
   gap: 12px;
 }
 
+.sb-header a, .sb-header a:hover {
+  text-decoration: none !important;
+  color: inherit;
+}
+
 .sb-logo-badge {
   width: 34px;
   height: 34px;

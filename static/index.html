@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BrandProof AI — BugHunters Edition | IIT Patna</title>
+  <meta name="description" content="Intelligent brand governance and deterministic claim verification platform by Team BugHunters, IIT Patna.">
+  <link rel="stylesheet" href="/static/css/design-system.css?v=3">
+  <link rel="stylesheet" href="/static/css/app.css?v=3">
+  <link rel="stylesheet" href="/static/css/landing.css?v=3">
+  <link rel="stylesheet" href="/static/css/responsive.css?v=3">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%2310192C'/><path d='M9 16.5l4.5 4.5L23 11' stroke='%23C7F36B' stroke-width='3.2' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+</head>
+<body>
+  <!-- Container for Public Landing Page -->
+  <div id="landing-view" style="display:none;"></div>
+
+  <!-- Container for Authenticated Application Workspace -->
+  <div id="layout" style="display:none;">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sb-header">
+        <a href="#/landing" style="display:flex;align-items:center;gap:12px;text-decoration:none;">
+          <div class="sb-logo-badge">BP</div>
+          <div class="sb-brand-info">
+            <span class="sb-brand-title">BrandProof AI</span>
+            <span class="sb-brand-sub">BugHunters · IIT Patna</span>
+          </div>
+        </a>
+      </div>
+
+      <nav class="sb-nav" id="sidebar-nav">
+        <span class="sb-section-label">Audit Engine</span>
+        <a href="#/overview" class="sb-nav-item active" data-nav="overview">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          <span>Overview</span>
+        </a>
+        <a href="#/audit" class="sb-nav-item" data-nav="audit">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          <span>Smart Audit</span>
+        </a>
+        <a href="#/fixlab" class="sb-nav-item" data-nav="fixlab">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          <span>Fix Lab</span>
+        </a>
+
+        <span class="sb-section-label" style="margin-top:10px;">Governance</span>
+        <a href="#/desk" class="sb-nav-item" data-nav="desk">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+          <span>Review Desk</span>
+        </a>
+        <a href="#/policies" class="sb-nav-item" data-nav="policies">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+          <span>Brand Policies</span>
+        </a>
+        <a href="#/scan" class="sb-nav-item" data-nav="scan">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+          <span>Creative Scan</span>
+        </a>
+
+        <span class="sb-section-label" style="margin-top:10px;">Verification & Proof</span>
+        <a href="#/vault" class="sb-nav-item" data-nav="vault">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          <span>Proof Vault</span>
+        </a>
+        <a href="#/simulator" class="sb-nav-item" data-nav="simulator">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+          <span>Impact Simulator</span>
+        </a>
+        <a href="#/activity" class="sb-nav-item" data-nav="activity">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          <span>Activity Log</span>
+        </a>
+        <a href="#/about" class="sb-nav-item" data-nav="about">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          <span>About BugHunters</span>
+        </a>
+      </nav>
+
+      <div class="sb-footer">
+        <div class="sb-role-switcher">
+          <label class="sb-role-label">Acting Persona</label>
+          <select id="role-selector" class="sb-role-select">
+            <option value="creator">Creator (Riya Sharma)</option>
+            <option value="compliance">Compliance (Neha Verma)</option>
+            <option value="reviewer">Reviewer (Kabir Singh)</option>
+            <option value="admin">Brand Admin (Ayush Kumar)</option>
+          </select>
+        </div>
+        <div class="sb-team-tag">
+          <span>Team BugHunters</span>
+          <span style="color:var(--lime);">IIT Patna</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Workspace Container -->
+    <div class="main-wrapper">
+      <header class="topbar">
+        <div class="topbar-left">
+          <div class="workspace-badge">
+            <span class="dot"></span>
+            <span id="topbar-org-name">ABC Electronics</span>
+            <span class="tag-sandbox">Demo Sandbox</span>
+          </div>
+        </div>
+        <div class="topbar-right">
+          <a href="#/landing" class="btn btn-sm">← Back to Landing Page</a>
+          <button class="btn btn-sm btn-primary" id="btn-restart-demo">↻ Reset Sandbox</button>
+        </div>
+      </header>
+
+      <main class="content-area" id="main-content">
+        <!-- Rendered view goes here -->
+      </main>
+    </div>
+  </div>
+
+  <script src="/static/js/api.js?v=3"></script>
+  <script src="/static/js/findings.js?v=3"></script>
+  <script src="/static/js/landing.js?v=3"></script>
+  <script src="/static/js/workflow.js?v=3"></script>
+  <script>
+    (async function init() {
+      // Initialize demo session
+      try {
+        const demo = await API.startDemo();
+        AppState.user = demo;
+        if (demo.org_name) {
+          const orgEl = document.getElementById("topbar-org-name");
+          if (orgEl) orgEl.textContent = demo.org_name;
+        }
+      } catch (e) {
+        console.warn("Session check:", e);
+      }
+
+      // Persona role switch
+      const roleSel = document.getElementById("role-selector");
+      if (roleSel) {
+        roleSel.onchange = (e) => {
+          AppState.currentRole = e.target.value;
+          route();
+        };
+      }
+
+      const restartBtn = document.getElementById("btn-restart-demo");
+      if (restartBtn) {
+        restartBtn.onclick = async () => {
+          await API.startDemo();
+          location.reload();
+        };
+      }
+
+      // Router
+      async function route() {
+        const path = window.location.pathname;
+        const hash = (location.hash || "").replace(/^#\/?/, "");
+
+        const landingContainer = document.getElementById("landing-view");
+        const layoutContainer = document.getElementById("layout");
+
+        // If root path or landing hash
+        const isLanding = (!hash && path === "/") || hash === "landing" || hash === "home";
+
+        if (isLanding) {
+          layoutContainer.style.display = "none";
+          landingContainer.style.display = "block";
+          landingContainer.innerHTML = LandingPage.render();
+          
+          // Hide walkthrough bar on landing page
+          const wt = document.getElementById("walkthrough-container");
+          if (wt) wt.style.display = "none";
+          window.scrollTo(0, 0);
+          return;
+        }
+
+        // Otherwise show Workspace
+        landingContainer.style.display = "none";
+        layoutContainer.style.display = "flex";
+        
+        const wt = document.getElementById("walkthrough-container");
+        if (wt) wt.style.display = "block";
+
+        const targetView = (hash === "workspace" || !hash) ? "overview" : hash;
+        const content = document.getElementById("main-content");
+        
+        // Update active nav
+        document.querySelectorAll(".sb-nav-item").forEach(a => {
+          a.classList.toggle("active", a.dataset.nav === targetView);
+        });
+
+        if (Views[targetView]) {
+          await Views[targetView](content);
+        } else {
+          await Views.overview(content);
+        }
+        Views.renderWalkthrough();
+      }
+
+      window.addEventListener("hashchange", route);
+      await route();
+    })();
+  </script>
+</body>
+</html>

@@ -574,6 +574,9 @@ def benchmark_run(request: Request, x_admin_token: str | None = Header(default=N
 # ---------------------------------------------------------------- static frontend
 
 app.mount("/static", StaticFiles(directory=STATIC), name="static")
+app.mount("/css", StaticFiles(directory=os.path.join(STATIC, "css")), name="css")
+app.mount("/js", StaticFiles(directory=os.path.join(STATIC, "js")), name="js")
+app.mount("/samples", StaticFiles(directory=os.path.join(STATIC, "samples")), name="samples")
 
 
 @app.get("/")

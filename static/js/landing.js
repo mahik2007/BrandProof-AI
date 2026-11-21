@@ -318,7 +318,7 @@ const LandingPage = {
 
           <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:var(--radius-lg);padding:30px;display:grid;grid-template-columns:1fr 1.2fr;gap:30px;align-items:center;">
             <div>
-              <img src="/static/samples/diwali_poster_offbrand.png" alt="Creative Scan Preview" style="width:100%;border-radius:8px;border:1px solid #CBD5E1;box-shadow:0 4px 14px rgba(0,0,0,0.06);">
+              <img src="/samples/diwali_poster_offbrand.png" onerror="this.src='/static/samples/diwali_poster_offbrand.png'" alt="Creative Scan Preview" style="width:100%;border-radius:8px;border:1px solid #CBD5E1;box-shadow:0 4px 14px rgba(0,0,0,0.06);">
             </div>
             <div>
               <div style="display:flex;gap:8px;margin-bottom:12px;">

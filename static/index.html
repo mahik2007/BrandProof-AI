@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>BrandProof AI — BugHunters Edition | IIT Patna</title>
   <meta name="description" content="Intelligent brand governance and deterministic claim verification platform by Team BugHunters, IIT Patna.">
-  <link rel="stylesheet" href="/static/css/design-system.css?v=3">
-  <link rel="stylesheet" href="/static/css/app.css?v=3">
-  <link rel="stylesheet" href="/static/css/landing.css?v=3">
-  <link rel="stylesheet" href="/static/css/responsive.css?v=3">
+  <link rel="stylesheet" href="/css/design-system.css?v=4">
+  <link rel="stylesheet" href="/css/app.css?v=4">
+  <link rel="stylesheet" href="/css/landing.css?v=4">
+  <link rel="stylesheet" href="/css/responsive.css?v=4">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%2310192C'/><path d='M9 16.5l4.5 4.5L23 11' stroke='%23C7F36B' stroke-width='3.2' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>">
 </head>
 <body>
@@ -116,22 +116,24 @@
     </div>
   </div>
 
-  <script src="/static/js/api.js?v=3"></script>
-  <script src="/static/js/findings.js?v=3"></script>
-  <script src="/static/js/landing.js?v=3"></script>
-  <script src="/static/js/workflow.js?v=3"></script>
+  <script src="/js/api.js?v=4"></script>
+  <script src="/js/findings.js?v=4"></script>
+  <script src="/js/landing.js?v=4"></script>
+  <script src="/js/workflow.js?v=4"></script>
   <script>
     (async function init() {
       // Initialize demo session
       try {
-        const demo = await API.startDemo();
-        AppState.user = demo;
-        if (demo.org_name) {
-          const orgEl = document.getElementById("topbar-org-name");
-          if (orgEl) orgEl.textContent = demo.org_name;
+        if (window.API && typeof API.startDemo === "function") {
+          const demo = await API.startDemo();
+          if (demo && demo.org_name) {
+            AppState.user = demo;
+            const orgEl = document.getElementById("topbar-org-name");
+            if (orgEl) orgEl.textContent = demo.org_name;
+          }
         }
       } catch (e) {
-        console.warn("Session check:", e);
+        console.warn("API/Demo session check:", e);
       }
 
       // Persona role switch
@@ -146,59 +148,90 @@
       const restartBtn = document.getElementById("btn-restart-demo");
       if (restartBtn) {
         restartBtn.onclick = async () => {
-          await API.startDemo();
+          try {
+            await API.startDemo();
+          } catch (e) {
+            console.warn("Reset demo:", e);
+          }
           location.reload();
         };
       }
 
-      // Router
+      // Robust Router
       async function route() {
-        const path = window.location.pathname;
-        const hash = (location.hash || "").replace(/^#\/?/, "");
+        try {
+          const path = window.location.pathname;
+          const hash = (location.hash || "").replace(/^#\/?/, "");
 
-        const landingContainer = document.getElementById("landing-view");
-        const layoutContainer = document.getElementById("layout");
+          const landingContainer = document.getElementById("landing-view");
+          const layoutContainer = document.getElementById("layout");
 
-        // If root path or landing hash
-        const isLanding = (!hash && path === "/") || hash === "landing" || hash === "home";
+          // Determine whether to display Landing Page or Workspace
+          const isLanding = (!hash && (path === "/" || path.endsWith("index.html"))) || hash === "landing" || hash === "home";
 
-        if (isLanding) {
-          layoutContainer.style.display = "none";
-          landingContainer.style.display = "block";
-          landingContainer.innerHTML = LandingPage.render();
+          if (isLanding) {
+            if (layoutContainer) layoutContainer.style.display = "none";
+            if (landingContainer) {
+              landingContainer.style.display = "block";
+              if (window.LandingPage && typeof LandingPage.render === "function") {
+                landingContainer.innerHTML = LandingPage.render();
+              } else {
+                landingContainer.innerHTML = `<div style="padding:40px;text-align:center;"><h2>BrandProof AI</h2><p>Loading landing interface...</p><a href="#/overview" class="btn btn-primary">Launch Workspace</a></div>`;
+              }
+            }
+            
+            // Hide walkthrough on landing
+            const wt = document.getElementById("walkthrough-container");
+            if (wt) wt.style.display = "none";
+            window.scrollTo(0, 0);
+            return;
+          }
+
+          // Otherwise display Workspace
+          if (landingContainer) landingContainer.style.display = "none";
+          if (layoutContainer) layoutContainer.style.display = "flex";
           
-          // Hide walkthrough bar on landing page
           const wt = document.getElementById("walkthrough-container");
-          if (wt) wt.style.display = "none";
-          window.scrollTo(0, 0);
-          return;
+          if (wt) wt.style.display = "block";
+
+          const targetView = (hash === "workspace" || !hash) ? "overview" : hash;
+          const content = document.getElementById("main-content");
+          
+          // Update active navigation item
+          document.querySelectorAll(".sb-nav-item").forEach(a => {
+            a.classList.toggle("active", a.dataset.nav === targetView);
+          });
+
+          if (window.Views && Views[targetView]) {
+            await Views[targetView](content);
+          } else if (window.Views && Views.overview) {
+            await Views.overview(content);
+          }
+          if (window.Views && typeof Views.renderWalkthrough === "function") {
+            Views.renderWalkthrough();
+          }
+        } catch (routerErr) {
+          console.error("Router navigation error:", routerErr);
+          // Failsafe: Ensure landing or workspace is visible
+          const landingContainer = document.getElementById("landing-view");
+          if (landingContainer) {
+            landingContainer.style.display = "block";
+            landingContainer.innerHTML = LandingPage.render();
+          }
         }
-
-        // Otherwise show Workspace
-        landingContainer.style.display = "none";
-        layoutContainer.style.display = "flex";
-        
-        const wt = document.getElementById("walkthrough-container");
-        if (wt) wt.style.display = "block";
-
-        const targetView = (hash === "workspace" || !hash) ? "overview" : hash;
-        const content = document.getElementById("main-content");
-        
-        // Update active nav
-        document.querySelectorAll(".sb-nav-item").forEach(a => {
-          a.classList.toggle("active", a.dataset.nav === targetView);
-        });
-
-        if (Views[targetView]) {
-          await Views[targetView](content);
-        } else {
-          await Views.overview(content);
-        }
-        Views.renderWalkthrough();
       }
 
       window.addEventListener("hashchange", route);
-      await route();
+      try {
+        await route();
+      } catch (initErr) {
+        console.error("Initialization error:", initErr);
+        const landingContainer = document.getElementById("landing-view");
+        if (landingContainer && window.LandingPage) {
+          landingContainer.style.display = "block";
+          landingContainer.innerHTML = LandingPage.render();
+        }
+      }
     })();
   </script>
 </body>

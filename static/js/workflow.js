@@ -616,7 +616,7 @@ const Views = {
     document.getElementById("btn-load-demo-img").onclick = () => {
       document.getElementById("scan-telemetry-body").innerHTML = `
         <div style="text-align:left;">
-          <img src="/static/samples/diwali_poster_offbrand.png" style="max-width:100%;border-radius:6px;border:1px solid var(--border-subtle);margin-bottom:12px;">
+          <img src="/samples/diwali_poster_offbrand.png" onerror="this.src='/static/samples/diwali_poster_offbrand.png'" style="max-width:100%;border-radius:6px;border:1px solid var(--border-subtle);margin-bottom:12px;">
           <div style="display:flex;flex-direction:column;gap:6px;font-size:13px;">
             <div><strong>Dimensions:</strong> 1080 × 1080 px</div>
             <div><strong>Logo Detection:</strong> <span class="badge badge-high">Missing Approved Logo</span></div>

@@ -1,7 +1,7 @@
 # BrandProof AI — BugHunters Edition
 
 <p align="center">
-  <img src="app/assets/abc_logo.png" width="90" alt="BrandProof AI Logo" style="border-radius:12px;" />
+  <img src="static/brandproof_logo.svg" width="110" height="110" alt="BrandProof AI Logo" />
 </p>
 
 <h3 align="center">

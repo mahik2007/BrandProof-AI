@@ -1,11 +1,11 @@
 # BrandProof AI — BugHunters Edition
 
 <p align="center">
-  <img src="static/brandproof_logo.svg" width="100" height="100" alt="BrandProof AI Logo" />
+  <img src="static/brandproof_logo.svg" width="90" height="90" alt="BrandProof AI Logo" />
   <br>
   <b>Every claim checked. Every flag proven.</b>
   <br>
-  <i>An intelligent brand-governance platform developed by Team BugHunters, IIT Patna.</i>
+  <i>Intelligent brand-governance platform by Team BugHunters, IIT Patna.</i>
 </p>
 
 <p align="center">
@@ -18,110 +18,107 @@
 
 ---
 
-## ⚡ System Architecture
+## 📸 Product Preview
+
+<p align="center">
+  <b>Public Landing Page</b>
+  <br>
+  <img src="static/screenshots/landing_preview.png" width="95%" alt="BrandProof AI Landing Page Preview" style="border-radius:8px; border:1px solid #2C3E56;" />
+</p>
+
+<p align="center">
+  <b>Governance Workspace Dashboard</b>
+  <br>
+  <img src="static/screenshots/workspace_preview.png" width="95%" alt="BrandProof AI Workspace Dashboard" style="border-radius:8px; border:1px solid #2C3E56;" />
+</p>
+
+---
+
+## ⚡ Architecture Pipeline
 
 ```mermaid
 flowchart LR
-    A["Marketing Copy & Creatives\n(EN / Hindi / Hinglish)"] --> B["Smart Audit Studio"]
-    B --> C{"Deterministic Rules Engine"}
+    A["Ad Copy & Creative\n(EN / Hindi / Hinglish)"] --> B["Smart Audit Studio"]
+    B --> C{"Rules Engine"}
     
     subgraph Brand Memory
-      M1[("Product Facts & MRP")]
-      M2[("Discount Thresholds")]
+      M1[("Facts & MRP")]
+      M2[("Discount Caps")]
       M3[("Warranty & Specs")]
-      M4[("Approved Terminology")]
     end
     
     C <--> Brand Memory
     C --> D["Risk Scoring\n(0 - 100)"]
-    D --> E["AI Fix Lab\n(Diff & Purpose Guard)"]
-    E --> F["Review Desk\n(Four-Eyes Approval)"]
-    F --> G["Proof Vault\n(SHA-256 Hash Chain)"]
+    D --> E["AI Fix Lab\n(Diff Preview)"]
+    E --> F["Review Desk\n(Four-Eyes)"]
+    F --> G["Proof Vault\n(SHA-256 Chain)"]
 ```
 
 ---
 
-## 📊 Evaluation & Detection Breakdown
+## 📊 Telemetry & Coverage
 
 ```mermaid
-pie title Rule Violations Detected in First Drafts
+pie title Detected Issues Distribution
     "Price & Outdated MRP (R-PRC-01)" : 32
     "Discount Beyond Limit (R-PRC-02)" : 28
     "Warranty Contradiction (R-WAR-01)" : 25
     "Absolute Guarantees (R-CLM-02)" : 15
-    "Missing T&C Disclaimer (R-PRC-03)" : 12
-    "Unverified Superlatives (R-CLM-01)" : 10
+    "Missing T&C (R-PRC-03)" : 12
+    "Superlatives (R-CLM-01)" : 10
 ```
 
 ```mermaid
-pie title Multilingual Coverage Distribution
-    "English Copy" : 55
-    "Hinglish Copy" : 27
-    "Hindi Copy" : 18
+pie title Supported Languages
+    "English" : 55
+    "Hinglish" : 27
+    "Hindi" : 18
 ```
 
 ---
 
-## 🔄 Four-Eyes Governance Lifecycle
+## 🔄 Governance Lifecycle
 
 ```mermaid
 sequenceDiagram
     autonumber
     actor Creator as ✍️ Creator
-    participant Audit as 🛡️ Smart Audit Studio
-    participant Fix as ⚡ AI Fix Lab
+    participant Audit as 🛡️ Audit Studio
+    participant Fix as ⚡ Fix Lab
     actor Compliance as ⚖️ Compliance
     actor Reviewer as 🔍 Reviewer
     participant Vault as ⛓️ Proof Vault
 
-    Creator->>Audit: Submit Draft Copy / Creative
-    Audit-->>Creator: Flagged Claims + Evidence + Risk (0-100)
-    Creator->>Fix: Apply Suggested Corrections
-    Fix-->>Creator: Re-Audited (Risk Reduced)
-    Creator->>Compliance: Submit Campaign for Review
-    Compliance->>Compliance: Validate & Clear High-Risk Claims
-    Compliance->>Reviewer: Hand Over to Reviewer
-    Reviewer->>Vault: Final Approval (Four-Eyes Enforced)
+    Creator->>Audit: Check Copy & Creative
+    Audit-->>Creator: Flags & Risk Score (0-100)
+    Creator->>Fix: Apply Corrections
+    Creator->>Compliance: Submit for Clearance
+    Compliance->>Reviewer: Route for Approval
+    Reviewer->>Vault: Approve (Anti-Self-Approval)
     Vault-->>Reviewer: Mint SHA-256 Proof Certificate
 ```
 
 ---
 
-## 🛠️ Feature Matrix
-
-| Module | Core Functionality | Telemetry / Output |
-|---|---|---|
-| **🛡️ Smart Audit Studio** | Tokenizes text in English, Hindi & Hinglish | Text offsets, severity tags, risk $0-100$ |
-| **⚡ AI Fix Lab** | Deterministic claim rewrite & diff comparison | Live risk drop & Purpose Guard check |
-| **📖 Brand Policy Centre** | Versioned facts, prices, warranty & banned terms | Single-source-of-truth brand memory |
-| **🖼️ Creative Scan** | Image template match, contrast & palette $\Delta E$ | Logo detection & color compliance score |
-| **👥 Review Desk** | Role-based approval (Creator $\to$ Compliance $\to$ Reviewer) | Four-eyes enforcement (anti-self-approval) |
-| **⛓️ Proof Vault** | SHA-256 hash chaining of approved campaigns | Cryptographic tamper-evident certificate |
-| **🔮 Impact Simulator** | Previews policy change impact on past campaigns | Affected campaigns count before commit |
-| **📜 Activity Log** | Chronological record of all team decisions | Transparent governance history |
-
----
-
-## 🚦 Quickstart
+## 🚀 Quickstart
 
 ```bash
-# 1. Clone & install dependencies
+# 1. Clone & install
 git clone https://github.com/mahik2007/BrandProof-AI.git
 cd BrandProof-AI
-python -m venv .venv
-source .venv/bin/activate  # Windows: .venv\Scripts\activate
+python -m venv .venv && source .venv/bin/activate  # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 
 # 2. Run local server
 python -m uvicorn app.main:app --host 127.0.0.1 --port 8000 --reload
 
-# 3. Run automated tests (47 tests)
+# 3. Test suite
 python -m pytest -q
 ```
 
 - **Landing Page:** `http://127.0.0.1:8000/`
-- **Application Workspace:** `http://127.0.0.1:8000/workspace`
-- **API Documentation:** `http://127.0.0.1:8000/docs`
+- **Workspace:** `http://127.0.0.1:8000/workspace`
+- **API Docs:** `http://127.0.0.1:8000/docs`
 
 ---
 
@@ -129,7 +126,7 @@ python -m pytest -q
 
 ```mermaid
 graph TD
-    Leader["Ayush Kumar\nTeam Leader, AI & Architecture"]
+    Leader["Ayush Kumar\nTeam Leader & Architecture"]
     Backend["Akanksha Mishra\nBackend Lead"]
     Frontend["Shiksha Rawat\nFrontend Lead"]
     Design["Mahima Kumari\nUI/UX & Accessibility"]
@@ -145,6 +142,4 @@ graph TD
 
 <p align="center">
   <b>BrandProof AI — BugHunters Edition</b> • IIT Patna
-  <br>
-  <i>“Trust every claim before it goes live.”</i>
 </p>

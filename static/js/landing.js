@@ -11,7 +11,7 @@ const LandingPage = {
       <header class="lp-header">
         <div class="lp-container">
           <nav class="lp-nav">
-            <a href="#" class="lp-logo">
+            <a href="#" class="lp-logo" style="text-decoration:none !important;">
               <div class="lp-logo-box">BP</div>
               <div>
                 <span class="lp-brand-name">BrandProof AI</span>

@@ -35,11 +35,18 @@
   height: 72px;
 }
 
+.lp-logo,
+.lp-logo:hover,
+.lp-logo:focus,
+.lp-logo * {
+  text-decoration: none !important;
+}
+
 .lp-logo {
   display: flex;
   align-items: center;
   gap: 12px;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 .lp-logo-box {
@@ -593,6 +600,12 @@
 
 .lp-footer-col a:hover {
   color: var(--lime);
+}
+
+.lp-header a.lp-logo:hover,
+.lp-header a.lp-logo span,
+.lp-header a.lp-logo div {
+  text-decoration: none !important;
 }
 
 /* Responsive */

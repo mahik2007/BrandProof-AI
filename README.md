@@ -38,20 +38,20 @@
 
 ```mermaid
 flowchart LR
-    A["Ad Copy & Creative\n(EN / Hindi / Hinglish)"] --> B["Smart Audit Studio"]
+    A["Ad Copy & Creative<br>(EN / Hindi / Hinglish)"] --> B["Smart Audit Studio"]
     B --> C{"Rules Engine"}
     
-    subgraph Brand Memory
+    subgraph BM["Brand Memory"]
       M1[("Facts & MRP")]
       M2[("Discount Caps")]
       M3[("Warranty & Specs")]
     end
     
-    C <--> Brand Memory
-    C --> D["Risk Scoring\n(0 - 100)"]
-    D --> E["AI Fix Lab\n(Diff Preview)"]
-    E --> F["Review Desk\n(Four-Eyes)"]
-    F --> G["Proof Vault\n(SHA-256 Chain)"]
+    C --- BM
+    C --> D["Risk Scoring<br>(0 - 100)"]
+    D --> E["AI Fix Lab<br>(Diff Preview)"]
+    E --> F["Review Desk<br>(Four-Eyes)"]
+    F --> G["Proof Vault<br>(SHA-256 Chain)"]
 ```
 
 ---
@@ -126,12 +126,12 @@ python -m pytest -q
 
 ```mermaid
 graph TD
-    Leader["Ayush Kumar\nTeam Leader & Architecture"]
-    Backend["Akanksha Mishra\nBackend Lead"]
-    Frontend["Shiksha Rawat\nFrontend Lead"]
-    Design["Mahima Kumari\nUI/UX & Accessibility"]
-    DevOps["Md Akil Akhtar\nImages & DevOps"]
-    QA["Antra Priyadarshini\nResearch & Proof Vault"]
+    Leader["Ayush Kumar<br>Team Leader & Architecture"]
+    Backend["Akanksha Mishra<br>Backend Lead"]
+    Frontend["Shiksha Rawat<br>Frontend Lead"]
+    Design["Mahima Kumari<br>UI/UX & Accessibility"]
+    DevOps["Md Akil Akhtar<br>Images & DevOps"]
+    QA["Antra Priyadarshini<br>Research & Proof Vault"]
 
     Leader --> Backend
     Leader --> Frontend
